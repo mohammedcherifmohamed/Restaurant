@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Poultry - Luxury Chicken Restaurant | Algeria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        'gold-dark': '#B78D40',
+                        'warm-red': '#C53D2B',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .testimonial-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .reservation-form input, .reservation-form select {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black bg-opacity-90 text-white z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-heading font-bold">
+                <span class="text-gold">Royal</span> Poultry
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-gold transition">Home</a>
+                <a href="#menu" class="hover:text-gold transition">Menu</a>
+                <a href="#services" class="hover:text-gold transition">Services</a>
+                <a href="#reservation" class="hover:text-gold transition">Reservations</a>
+                <a href="#contact" class="hover:text-gold transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="hover:text-gold transition">Home</a>
+                <a href="#menu" class="hover:text-gold transition">Menu</a>
+                <a href="#services" class="hover:text-gold transition">Services</a>
+                <a href="#reservation" class="hover:text-gold transition">Reservations</a>
+                <a href="#contact" class="hover:text-gold transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Video Background -->
+        <video autoplay loop muted playsinline class="video-background">
+            <source src="https://example.com/chicken-restaurant-video.mp4" type="video/mp4">
+            <!-- Fallback image -->
+            <img src="https://images.unsplash.com/photo-1559847844-5315695dadae" alt="Restaurant Interior" class="video-background">
+        </video>
+        
+        <!-- Overlay -->
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <!-- Hero Content -->
+        <div class="container mx-auto px-6 z-10 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 animate-slide-up">
+                Welcome to the <span class="text-gold">Largest Luxury</span><br>Chicken Restaurant in Algeria
+            </h1>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
+                Experience poultry perfection in an atmosphere of refined elegance
+            </p>
+            <a href="#reservation" class="bg-gold hover:bg-gold-dark text-black font-bold py-3 px-8 rounded-full transition duration-300 inline-block animate-slide-up" style="animation-delay: 0.4s;">
+                Reserve Your Table
+            </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#menu" class="text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Our <span class="text-gold">Signature</span> Dishes</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Each dish is crafted with premium ingredients and traditional Algerian flavors with a modern twist
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143" alt="Spiced Chicken Tagine" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-warm-red text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Chef's Special
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Spiced Chicken Tagine</h3>
+                            <span class="text-gold font-bold text-lg">2,800 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Slow-cooked chicken with preserved lemons, olives, and a blend of Moroccan spices
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(48)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Crispy Golden Chicken" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Crispy Golden Chicken</h3>
+                            <span class="text-gold font-bold text-lg">2,500 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Double-breaded free-range chicken with our secret spice blend, served with garlic dip
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(36)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b" alt="Chicken Shawarma Platter" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-warm-red text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Popular
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Chicken Shawarma Platter</h3>
+                            <span class="text-gold font-bold text-lg">2,300 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Marinated chicken slices with garlic sauce, pickles, and fresh vegetables
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(62)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Truffle Chicken" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Truffle Chicken</h3>
+                            <span class="text-gold font-bold text-lg">3,500 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Pan-seared chicken breast with black truffle sauce and wild mushrooms
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(28)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710" alt="Berber Chicken" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Berber Chicken</h3>
+                            <span class="text-gold font-bold text-lg">2,600 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Traditional Algerian recipe with aromatic spices, onions, and chickpeas
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(41)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec" alt="Chicken Pastilla" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-warm-red text-white px-3 py-1 rounded-full text-sm font-bold">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-heading font-bold">Chicken Pastilla</h3>
+                            <span class="text-gold font-bold text-lg">2,900 DA</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Flaky pastry filled with spiced chicken, almonds, and dusted with cinnamon sugar
+                        </p>
+                        <div class="flex items-center text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-2 text-sm">(19)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-gold text-gold hover:bg-gold hover:text-black font-bold py-3 px-8 rounded-full transition duration-300">
+                    View Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Services Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Exclusive <span class="text-gold">Services</span></h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Beyond exceptional dining, we offer premium services for your special occasions
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="text-gold text-5xl mb-6">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-4">VIP Private Dining</h3>
+                    <p class="text-gray-600 mb-4">
+                        Experience ultimate privacy in our exclusive VIP rooms with personalized service
+                    </p>
+                    <ul class="text-left text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Capacity for 8-20 guests</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Dedicated chef and server</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Customizable menu options</span>
+                        </li>
+                    </ul>
+                    <a href="#reservation" class="text-gold font-bold hover:underline">Book VIP Experience</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="text-gold text-5xl mb-6">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-4">Private Events</h3>
+                    <p class="text-gray-600 mb-4">
+                        Host your special occasions in our elegant private event spaces
+                    </p>
+                    <ul class="text-left text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Weddings, birthdays, corporate events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Full event planning services</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Custom decor and menu options</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-gold font-bold hover:underline">Inquire About Events</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition duration-300">
+                    <div class="text-gold text-5xl mb-6">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold mb-4">Premium Catering</h3>
+                    <p class="text-gray-600 mb-4">
+                        Bring our luxury dining experience to your home or office
+                    </p>
+                    <ul class="text-left text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Full-service catering for 10-500 guests</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Chef-attended stations available</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-gold mr-2 mt-1"></i>
+                            <span>Premium china and linen service</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-gold font-bold hover:underline">Request Catering Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Make a <span class="text-gold">Reservation</span></h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-300">
+                    Secure your table at Algeria's premier chicken dining destination
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-10 bg-gold bg-opacity-10">
+                        <h3 class="text-2xl font-heading font-bold mb-6 text-gold">Reservation Details</h3>
+                        <form class="reservation-form space-y-4">
+                            <div>
+                                <label class="block text-gray-300 mb-2">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Phone</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="+213 XXX XX XX XX">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-300 mb-2">Date</label>
+                                    <input type="date" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-300 mb-2">Time</label>
+                                    <select class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                        <option>6:00 PM</option>
+                                        <option>6:30 PM</option>
+                                        <option>7:00 PM</option>
+                                        <option>7:30 PM</option>
+                                        <option>8:00 PM</option>
+                                        <option>8:30 PM</option>
+                                        <option>9:00 PM</option>
+                                        <option>9:30 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Number of Guests</label>
+                                <select class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                    <option>1 person</option>
+                                    <option>2 people</option>
+                                    <option>3 people</option>
+                                    <option>4 people</option>
+                                    <option>5 people</option>
+                                    <option>6 people</option>
+                                    <option>7 people</option>
+                                    <option>8+ people</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 mb-2">Special Requests</label>
+                                <textarea class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" rows="3" placeholder="Allergies, celebrations, etc."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gold hover:bg-gold-dark text-black font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Confirm Reservation
+                            </button>
+                        </form>
+                    </div>
+                    <div class="md:w-1/2 p-10 flex items-center">
+                        <div>
+                            <h3 class="text-2xl font-heading font-bold mb-6 text-gold">Hours & Information</h3>
+                            <div class="space-y-6 text-gray-300">
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Opening Hours</h4>
+                                    <p>Monday - Thursday: 11:00 AM - 11:00 PM</p>
+                                    <p>Friday - Saturday: 11:00 AM - 12:00 AM</p>
+                                    <p>Sunday: 11:00 AM - 10:00 PM</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Location</h4>
+                                    <p>123 Gourmet Avenue, Algiers, Algeria</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">For Large Groups</h4>
+                                    <p>For parties of 8 or more, please call us at <span class="text-gold">+213 123 456 789</span></p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Dress Code</h4>
+                                    <p>Smart casual. No sportswear or flip-flops.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">What Our <span class="text-gold">Guests</span> Say</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    Don't just take our word for it - hear from our delighted customers
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Sarah K." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-heading font-bold">Sarah K.</h4>
+                            <div class="flex text-gold text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "The Crispy Golden Chicken is absolutely divine! The ambiance is perfect for a romantic dinner. We celebrated our anniversary here and the staff made it extra special."
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        Visited on March 15, 2023
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohammed T." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-heading font-bold">Mohammed T.</h4>
+                            <div class="flex text-gold text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "I hosted a business dinner in their VIP room and it was flawless. The service was impeccable and the food presentation was worthy of a Michelin star. Highly recommend!"
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        Visited on April 2, 2023
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Amina B." class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-heading font-bold">Amina B.</h4>
+                            <div class="flex text-gold text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-4">
+                        "The Chicken Pastilla is a revelation! I've never tasted anything like it. The restaurant design is stunning - every detail from lighting to tableware is carefully considered."
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        Visited on May 10, 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Get In <span class="text-gold">Touch</span></h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    We'd love to hear from you. Reach out for reservations, events, or any inquiries
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-heading font-bold mb-6 text-gold">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-gold text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-black">Address</h4>
+                                    <p class="text-gray-600">123 Gourmet Avenue, Algiers, Algeria</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-gold text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-black">Phone</h4>
+                                    <p class="text-gray-600">+213 123 456 789</p>
+                                    <p class="text-gray-600">+213 987 654 321 (Events)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-gold text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-black">Email</h4>
+                                    <p class="text-gray-600">reservations@royalpoultry.dz</p>
+                                    <p class="text-gray-600">events@royalpoultry.dz</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-gold text-xl mr-4 mt-1">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-black">WhatsApp</h4>
+                                    <p class="text-gray-600">
+                                        <a href="https://wa.me/213123456789" class="hover:underline">+213 123 456 789</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-heading font-bold mt-10 mb-6 text-gold">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-gold hover:text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-gold hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-gold hover:text-white transition">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-gold hover:text-white transition">
+                                <i class="fab fa-snapchat-ghost"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-heading font-bold mb-6 text-gold">Send Us a Message</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Full Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Subject</label>
+                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+                                    <option>Reservation Inquiry</option>
+                                    <option>Private Event</option>
+                                    <option>Catering Services</option>
+                                    <option>Feedback</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Message</label>
+                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold" rows="5" placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="bg-gold hover:bg-gold-dark text-black font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div class="mt-12 rounded-lg overflow-hidden shadow-xl">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25580.42337092824!2d3.0585841!3d36.7537843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad6795639515%3A0x4a1a1f8b6a6a3a2a!2sAlgiers%2C%20Algeria!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-heading font-bold mb-4">
+                        <span class="text-gold">Royal</span> Poultry
+                    </h3>
+                    <p class="text-gray-400">
+                        Algeria's premier luxury chicken dining experience, combining traditional flavors with contemporary elegance.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-gold">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-gold transition">Home</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-gold transition">Menu</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold transition">Services</a></li>
+                        <li><a href="#reservation" class="text-gray-400 hover:text-gold transition">Reservations</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-gold">Opening Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex justify-between">
+                            <span>Mon - Thu:</span>
+                            <span>11:00 - 23:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Fri - Sat:</span>
+                            <span>11:00 - 00:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday:</span>
+                            <span>11:00 - 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold text-lg mb-4 text-gold">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Subscribe to receive updates on special events and promotions
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-black">
+                        <button type="submit" class="bg-gold hover:bg-gold-dark text-black px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2023 Royal Poultry. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-gold transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gold transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gold transition">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-gold transition">
+                        <i class="fab fa-tripadvisor"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.classList.add('py-3');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.remove('py-3');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.menu-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.menu-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Run on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
